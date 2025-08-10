@@ -1,0 +1,176 @@
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      text-decoration: none;
+      list-style: none;
+    }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    
+}
+
+header {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ flex-direction: column;
+ margin-bottom: 2%;
+ background-color:#f5f6f8; 
+ color: #0077cc;
+}
+
+
+h1 {
+    font-size: 50px;
+}
+
+nav > ul {
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin: 2% 0;
+
+
+}
+nav > ul > li  {
+color: #000;
+display: flex;
+justify-content: space-between; 
+
+
+
+}
+nav > ul > li > a  {
+
+color: #000;
+margin: 0 50px;
+padding: 2%;
+font-size: 18px;
+white-space: nowrap;
+padding: 1%;
+}
+
+nav > ul > li > a:hover {
+
+background-color: #0077cc;
+color: white;
+transition: background 0.2s;
+
+}
+
+
+/* 📌 Conteneur principal */
+.listContainer {
+    width: 85%;
+    margin: 0 auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* 📝 Titre principal */
+h2 {
+    text-align: center;
+    font-weight: 500;
+    color: #222;
+    margin-bottom: 20px;
+}
+
+/* ✅ Liste des tâches */
+.todo-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1vh;
+    padding: 0;
+    margin: 0;
+}
+
+.todo-list li {
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    background-color: #f5f6f8;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+/* .todo-list li:hover {
+    background-color: #e9ecef;
+} */
+
+/* 🔗 Liens */
+.todo-list > li > div  {
+
+    color: #0077cc;
+    background-color: #f5f6f8;
+    width: 100%;
+    font-weight: bold;
+    padding: 5px;
+    margin: 2% 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+   
+}
+
+
+.todo-list > li > div > a {
+
+    /* color: #0077cc;
+    background-color: #f5f6f8; */
+    width: 100%;
+    font-weight: 500;
+    padding: 5px;
+  
+    /* display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: row; */
+}
+.todo-list  > li > p {
+    color: #0077cc;
+    font-weight: 500;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+}
+
+.todo-list > li > label {
+    margin: 2%;
+    padding: 2%;
+   
+}
+
+
+.todo-list :hover {
+    color: #005fa3;
+}
+
+
+p {
+    line-height: 1.6;
+    margin: 8px 0;
+}
+
+a {
+    transition: color 0.2s ease;
+}
+
+a[href="index.php"] {
+    display: inline-block;
+    margin-top: 20px;
+    color: #555;
+}
+
+a[href="index.php"]:hover {
+    color: #000;
+}
