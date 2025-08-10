@@ -83,24 +83,23 @@
                 }
             ?>
        <form action="" method="POST">
-                <div class="inputContainer"> 
+                <div > 
                      <label for="title">Titre</label>
                     <input placeholder="title" type="text" id="title" name="title"  class="input" >
                 </div>
-                <div class="inputContainer">
+                <div >
                      <label for="description">description</label>
                     <input placeholder="description" type="text" id="description" name="description"  class="input">
-                </div>
-                <div class="inputContainer">
+                </div> 
+                <div>
                     <label for="status">Statut</label>
-                <div class="taskInput">
                     <select name="status" id="status">
                     <option value="0"> à faire</option>
                     <option value="1">en cours</option>
                     <option value="2" >terminée</option>
                     </select>
                  </div>
-                   <div class="taskInput">
+                 <div>
                     <label for="prority">Priorité</label>
                     <select name="priority" id="priority">
                     <option value="0" >moyenne</option>
@@ -108,18 +107,11 @@
                     <option value="2" >moyenne</option>
                     </select>
                  </div>
-                    <!-- <input placeholder="status" type="text" id="status" name="status" class="input">
-                </div>
-                 <div class="inputContainer">
-                    <label for="priority">Task prority</label>
-                    <input placeholder="prority" type="text" id="priority" name="priority"  class="input">
-                </div> -->
-                 <div class="inputContainer">
-                    <label for="due_date">Due date</label>
+                 <div>
+                    <label for="due_date">Date d'échéance</label>
                     <input placeholder="due_date" type="date" id="due_date" name="due_date"  class="input">
-                </div>
-
-                <div >
+               </div>
+                <div>
                     <input class="buttonSend" type="submit" value="Envoyer">
                 </div>
             </form>

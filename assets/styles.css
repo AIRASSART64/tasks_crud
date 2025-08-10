@@ -1,4 +1,4 @@
-
+/* /////////////////////// index.php ////////////////////////////////////////////// */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -51,7 +51,7 @@ nav > ul > li > a  {
 
 color: #000;
 margin: 0 50px;
-padding: 2%;
+padding: 1% 2%;
 font-size: 18px;
 white-space: nowrap;
 padding: 1%;
@@ -60,13 +60,12 @@ padding: 1%;
 nav > ul > li > a:hover {
 
 background-color: #0077cc;
-color: white;
+color: #f5f6f8;
 transition: background 0.2s;
+border-radius:3px;
 
 }
 
-
-/* 📌 Conteneur principal */
 .listContainer {
     width: 85%;
     margin: 0 auto;
@@ -76,7 +75,6 @@ transition: background 0.2s;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-/* 📝 Titre principal */
 h2 {
     text-align: center;
     font-weight: 500;
@@ -84,7 +82,6 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* ✅ Liste des tâches */
 .todo-list {
     list-style: none;
     display: grid;
@@ -102,11 +99,7 @@ h2 {
     transition: background-color 0.2s ease;
 }
 
-/* .todo-list li:hover {
-    background-color: #e9ecef;
-} */
 
-/* 🔗 Liens */
 .todo-list > li > div  {
 
     color: #0077cc;
@@ -124,16 +117,10 @@ h2 {
 
 .todo-list > li > div > a {
 
-    /* color: #0077cc;
-    background-color: #f5f6f8; */
     width: 100%;
     font-weight: 500;
     padding: 5px;
   
-    /* display: flex;
-    justify-content: start;
-    align-items: start;
-    flex-direction: row; */
 }
 .todo-list  > li > p {
     color: #0077cc;
@@ -173,4 +160,29 @@ a[href="index.php"] {
 
 a[href="index.php"]:hover {
     color: #000;
+}
+
+/* /////////////////////// FORM add.php ////////////////////////////////////////////// */
+
+form {
+    
+    width: 70%;
+    margin: 0 auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+}
+form  > div {
+    
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    margin-left: 25%;
 }
