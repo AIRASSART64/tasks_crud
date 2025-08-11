@@ -46,9 +46,9 @@
                     </div>
                     <p><?= htmlspecialchars($task['description']) ?></p>
                     <div class = "button">
-                    <a class="consult" href="task.php?title=<?= urlencode($task['title']) ?>">Voir</a>
-                    <a class="edit" href="edit.php?title=<?= urlencode($task['title']) ?>">Modifier</a>
-                    <a class="delete" href="delete.php?title=<?= urlencode($task['title']) ?>">Supprimer</a>
+                    <a class="consult" href="task.php?id=<?= urlencode($task['id']) ?>">Voir</a>
+                    <a class="edit" href="../config/edit.php?id=<?= urlencode($task['id']) ?>">Modifier</a>
+                    <a class="delete" href="../config/delete.php?id=<?= urlencode($task['id']) ?>">Supprimer</a>
                     </div>
 
 
@@ -57,6 +57,9 @@
      </ul>
  </div>
 
+  <?php
+      include '../includes/footer.php';
+    ?>
 </body>
 </html>
 

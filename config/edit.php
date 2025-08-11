@@ -2,23 +2,26 @@
 require_once '../config/database.php';
 $pdo = dbConnexion();
 
-// Récupération des données
-if (isset($_GET['title']) && is_numeric($_GET['id'])) {
+// on se positionne sur toutes les données db associées à la tâche selectionnée dans la liste des tâches et identifiées par un ID  ---
+if (isset($_GET['id'])) {
     $id = (int) $_GET['id'];
+    //  On appelle toutes les données de la db associées à la tâche selectionnée
 
-    $stmt = $pdo->prepare("SELECT * FROM tasks WHERE id = :id");
-    $stmt->execute(['id' => $id]);
-    $task = $stmt->fetch(PDO::FETCH_ASSOC);
+    $sqlEdit = $pdo->prepare("SELECT * FROM tasks WHERE id = :id");
+    $sqlEdit->execute(['id' => $id]);
+    $task = $sqlEdit->fetch(PDO::FETCH_ASSOC);
 
+    // message d'erreur et fin d'execution du code si la tâche ou l'Id n'existent pas dans la db
     if (!$task) {
         die("Tâche introuvable");
     }
-} else {
-    die("ID invalide");
-}
+    } else {
+    die("ID inexistant");
+    }
 
-// Traitement du formulaire
+// Traitement des modifications saisies et envoyées
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // $id = (int) $_POST['id'];
     $title = $_POST['title'];
     $description = $_POST['description'];
     $status = $_POST['status'];
@@ -37,9 +40,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'due_date' => $due_date,
         'id' => $id
     ]);
-
-    header("Location: list_tasks.php");
+    
     exit;
+}
+    // Formatage de la date d'échaeance
+    $dueDate = $task['due_date'];
+    $formatDueDate = "Date invalide";
+    if ($dueDate && strtotime($dueDate) !== false) {
+    $formatDueDate = date("d/m/Y", strtotime($dueDate));
 }
 ?>
 
@@ -49,26 +57,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier tâche</title>
+     <link rel="stylesheet" href="../assets/styles.css">
 </head>
 <body>
-<h2>Modifier la tâche</h2>
-<form method="post">
-    <label>Titre :</label>
-    <input type="text" name="title" value="<?= htmlspecialchars($task['title']) ?>" required><br>
+<?php
+      include '../includes/header.php';
+ ?>
 
-    <label>Description :</label>
-    <textarea name="description"><?= htmlspecialchars($task['description']) ?></textarea><br>
-
-    <label>Statut :</label>
-    <input type="text" name="status" value="<?= htmlspecialchars($task['status']) ?>"><br>
-
-    <label>Priorité :</label>
-    <input type="text" name="priority" value="<?= htmlspecialchars($task['priority']) ?>"><br>
-
-    <label>Échéance :</label>
-    <input type="date" name="due_date" value="<?= htmlspecialchars($task['due_date']) ?>"><br>
-
-    <button type="submit">Enregistrer</button>
+<h2 class="h2">Modifier la tâche</h2>
+<form method="post" class="newTask">
+     <div class="input"> 
+    <label for="title">Titre (obligatoire)</label>
+    <input type="text" name="title" value="<?= htmlspecialchars($task['title']) ?>" maxlength="50"  required>
+    </div>
+    <div class="input">
+    <label for="description">Déscription (obligatoire)</label>
+    <textarea name="description" maxlength="200" require><?= htmlspecialchars($task['description']) ?> </textarea>
+    </div> 
+    <div class="input">
+                    <label for="status">Selectionnez un statut </label>
+                    <select name="status" >
+                    <option value="0"> à faire</option>
+                    <option value="1">en cours</option>
+                    <option value="2" >terminée</option>
+                    </select>
+    </div>
+     <div class="input">
+                    <label for="prority">Séléctionner une priorité</label>
+                    <select name="priority">
+                    <option value="0" >moyenne</option>
+                    <option value="1">haute</option>
+                    <option value="2" >moyenne</option>
+                    </select>
+     </div>
+    <div class="input">
+                    <label for="due_date"> Choisissez une date d'échéance (obligatoire)</label>
+                    <input type="date" name="due_date" value="<?= htmlspecialchars($task['due_date']) ?>" require>
+     </div>
+    <div class="submit">
+                    <input class="buttonSend" type="submit" value="Envoyer">
+    </div>
 </form>
+         
+
+ <?php
+      include '../includes/footer.php';
+    ?>
 </body>
 </html>

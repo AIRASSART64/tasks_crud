@@ -69,7 +69,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add task</title>
+    <title>Ajouter une tâche</title>
     <link rel="stylesheet" href="../assets/styles.css">
 </head>
 <body>
@@ -77,6 +77,8 @@
     include '../includes/header.php';
     ?>
     <section>
+        <h2 h2 class="h2"> Ajouter une tâche </h2>
+        
          <?php foreach ($errors as $error): ?>  
         <p class="error"><?= htmlspecialchars($error) ?></p>
         <?php endforeach; ?>
@@ -121,5 +123,10 @@
             </form>
 
    </section>
+
+   <?php
+      include '../includes/footer.php';
+    ?>
+    
 </body>
 </html>

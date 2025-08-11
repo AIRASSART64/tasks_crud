@@ -1,26 +1,24 @@
 <?php
 require_once '../config/database.php';
 
-// Récupération et validation du paramètre
-$title = $_GET['title'] ?? '';
-// if (empty($title)) {
-//     echo "Titre de tâche manquant";
-//     exit;
-// }
-
+// on se positionne sur toutes les données db associées à la tâche selectionnée dans la liste des tâches et identifiées par un ID  ---
+if (isset($_GET['id'])) {
+    $id = (int) $_GET['id'];
+//  Requete et execution sql dans la db
 $pdo = dbConnexion();
-$sql = "SELECT title, description, status, priority, due_date FROM tasks WHERE title = ?";
+$sql = "SELECT title, description, status, priority, due_date FROM tasks WHERE id = ?";
 $requestDb = $pdo->prepare($sql);
-$requestDb->execute([$title]);
+$requestDb->execute([$id]);
 $task = $requestDb->fetch(PDO::FETCH_ASSOC);
 
-// Vérification
+// Vérification de l'execution de la requete
 if (!$task) {
     echo "Tâche inexistante";
     exit;
 }
+}
 
-// Formatage de la date
+// Formatage de la date d'échaeance
 $dueDate = $task['due_date'];
 $formatDueDate = "Date invalide";
 if ($dueDate && strtotime($dueDate) !== false) {
@@ -48,9 +46,13 @@ if ($dueDate && strtotime($dueDate) !== false) {
     <p>Déscription : <?= htmlspecialchars($task['description']) ?></p>
     <div class = "buttonTask">
         <a class="return" href="index.php">←  ma liste</a>
-        <a class="editTask" href="edit.php?title=<?= urlencode($task['title']) ?>">Modifier</a>
-        <a class="deleteTask" href="delete.php?title=<?= urlencode($task['title']) ?>">Supprimer</a>
+        <a class="editTask" href="../config/edit.php?id=<? $task['id'] ?>">Modifier</a>
+        <a class="deleteTask" href="../config/delete.php?id=<? $task['id'] ?>">Supprimer</a>
     </div>
     </div>
+
+    <?php
+      include '../includes/footer.php';
+    ?>
 </body>
 </html>
