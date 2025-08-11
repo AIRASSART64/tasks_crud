@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once '../config/database.php';
 $pdo = dbConnexion();
 
@@ -21,7 +22,7 @@ if (isset($_GET['id'])) {
 
 // Traitement des modifications saisies et envoyées
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // $id = (int) $_POST['id'];
+    $id = (int) $_POST['id'];
     $title = $_POST['title'];
     $description = $_POST['description'];
     $status = $_POST['status'];
@@ -31,8 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sql = "UPDATE tasks 
             SET title = :title, description = :description, status = :status, priority = :priority, due_date = :due_date 
             WHERE id = :id";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([
+    $editTask = $pdo->prepare($sql);
+    $editTask->execute([
         'title' => $title,
         'description' => $description,
         'status' => $status,
@@ -40,8 +41,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'due_date' => $due_date,
         'id' => $id
     ]);
-    
+    //confirmation de la modification de la tâche et retour à la page index.php
+      $_SESSION['message'] = " La tâche a bien été modifiée.";
+    header("Location: ../public/index.php");
     exit;
+
 }
     // Formatage de la date d'échaeance
     $dueDate = $task['due_date'];
@@ -74,6 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <label for="description">Déscription (obligatoire)</label>
     <textarea name="description" maxlength="200" require><?= htmlspecialchars($task['description']) ?> </textarea>
     </div> 
+    <!-- A revoir : les selections du statut et de la priorité ne sont pas prises en compte dans la modification enregistrée dans la db -->
     <div class="input">
                     <label for="status">Selectionnez un statut </label>
                     <select name="status" >

@@ -6,7 +6,7 @@ if (isset($_GET['id'])) {
     $id = (int) $_GET['id'];
 //  Requete et execution sql dans la db
 $pdo = dbConnexion();
-$sql = "SELECT title, description, status, priority, due_date FROM tasks WHERE id = ?";
+$sql = "SELECT * FROM tasks WHERE id = ?";
 $requestDb = $pdo->prepare($sql);
 $requestDb->execute([$id]);
 $task = $requestDb->fetch(PDO::FETCH_ASSOC);
@@ -46,8 +46,8 @@ if ($dueDate && strtotime($dueDate) !== false) {
     <p>Déscription : <?= htmlspecialchars($task['description']) ?></p>
     <div class = "buttonTask">
         <a class="return" href="index.php">←  ma liste</a>
-        <a class="editTask" href="../config/edit.php?id=<? $task['id'] ?>">Modifier</a>
-        <a class="deleteTask" href="../config/delete.php?id=<? $task['id'] ?>">Supprimer</a>
+        <a class="editTask" href="../config/edit.php?id=<?=$task['id'] ?>">Modifier</a>
+        <a class="deleteTask" href="../config/delete.php?id=<?= $task['id'] ?>">Supprimer</a>
     </div>
     </div>
 

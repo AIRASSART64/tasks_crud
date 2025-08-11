@@ -190,7 +190,18 @@ h2 {
     color: rgb(5, 18, 141) ;
     font-weight: bold;
 }
-
+.priorityRed {
+    color: #dc0c0c ;
+    font-weight: bold;
+}
+.priorityBlue {
+    color: #0077cc ;
+    font-weight: bold;
+}
+.priorityGrey {
+    color: rgb(5, 18, 141) ;
+    font-weight: bold;
+}
 
 /* /////////////////////// FORM add.php ////////////////////////////////////////////// */
 
