@@ -22,9 +22,9 @@ if (!$task) {
 
 // Formatage de la date
 $dueDate = $task['due_date'];
-$formatdDate = "Date invalide";
+$formatDueDate = "Date invalide";
 if ($dueDate && strtotime($dueDate) !== false) {
-    $formatDate = date("d/m/Y", strtotime($dueDate));
+    $formatDueDate = date("d/m/Y", strtotime($dueDate));
 }
 ?>
 <!DOCTYPE html>
@@ -42,11 +42,15 @@ if ($dueDate && strtotime($dueDate) !== false) {
 <body>
     <div class="taskContainer">
     <h2><?= htmlspecialchars($task['title']) ?></h2>
-    <p>Déscription : <?= htmlspecialchars($task['description']) ?></p>
     <p>Statut : <?= htmlspecialchars($task['status']) ?></p>
     <p>Priorité : <?= htmlspecialchars($task['priority']) ?></p>
-    <p>Échéance : <?= htmlspecialchars($formatDate) ?></p>
-    <p><a href="index.php">← Retour à la liste</a></p>
+    <p>Échéance : <?= htmlspecialchars($formatDueDate) ?></p>
+    <p>Déscription : <?= htmlspecialchars($task['description']) ?></p>
+    <div class = "buttonTask">
+        <a class="return" href="index.php">←  ma liste</a>
+        <a class="editTask" href="edit.php?title=<?= urlencode($task['title']) ?>">Modifier</a>
+        <a class="deleteTask" href="delete.php?title=<?= urlencode($task['title']) ?>">Supprimer</a>
+    </div>
     </div>
 </body>
 </html>

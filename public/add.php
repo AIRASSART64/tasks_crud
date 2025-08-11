@@ -69,7 +69,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tasks list</title>
+    <title>Add task</title>
     <link rel="stylesheet" href="../assets/styles.css">
 </head>
 <body>
@@ -77,15 +77,15 @@
     include '../includes/header.php';
     ?>
     <section>
-        <?php
-                foreach ($errors as $error) {
-                    echo $error;
-                }
-                if(!empty($message)) {
-                    echo $message;
-                }
-            ?>
-       <form action="" method="POST" class="newTask">
+         <?php foreach ($errors as $error): ?>  
+        <p class="error"><?= htmlspecialchars($error) ?></p>
+        <?php endforeach; ?>
+
+        <?php if (!empty($message)): ?>
+        <p class="success"><?= htmlspecialchars($message) ?></p>
+        <?php endif; ?>
+
+        <form action="" method="POST" class="newTask">
                 <div class="input"> 
                     <label for="title">Titre (obligatoire)</label>
                     <input placeholder="Choisissez le titre de la tâche" type="text" id="title" name="title" maxlength="50" require >

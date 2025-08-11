@@ -60,9 +60,10 @@ padding: 1%;
 nav > ul > li > a:hover {
 
 background-color: #0077cc;
+padding: 2% 4% ;
 color: #f5f6f8;
 transition: background 0.2s;
-border-radius:3px;
+border-radius:20px;
 
 }
 
@@ -76,8 +77,8 @@ border-radius:3px;
 }
 
 h2 {
-    text-align: center;
-    font-weight: 500;
+    text-align: left;
+    font-size: 30px;
     color: #222;
     margin-bottom: 20px;
 }
@@ -100,7 +101,7 @@ h2 {
 }
 
 
-.todo-list > li > div  {
+.button  {
 
     color: #0077cc;
     background-color: #f5f6f8;
@@ -115,13 +116,39 @@ h2 {
 }
 
 
-.todo-list > li > div > a {
+.consult {
+   
+    background-color: #0077cc;
+    border-radius: 20px;
+    color: #f5f6f8 ;
+    padding: 7px 35px;
+    font-size: 15px;
+    border: none;
 
-    width: 100%;
-    font-weight: 500;
-    padding: 5px;
-  
 }
+
+.edit {
+   
+    background-color: rgb(5, 18, 141);
+    border-radius: 20px;
+    color: #f5f6f8 ;
+    padding: 7px 20px;
+    font-size: 15px;
+    border: none;
+
+}
+.delete {
+    
+    background-color: #dc0c0c;
+    border-radius: 20px;
+    color: #f5f6f8 ;
+    padding: 7px 15px;
+    font-size: 15px;
+    border: none;
+
+}
+
+
 .todo-list  > li > p {
     color: #0077cc;
     font-weight: 500;
@@ -129,38 +156,29 @@ h2 {
     justify-content: start;
     align-items: start;
     flex-direction: column;
-}
-
-.todo-list > li > label {
-    margin: 2%;
-    padding: 2%;
-   
-}
-
-
-.todo-list :hover {
-    color: #005fa3;
-}
-
-
-p {
     line-height: 1.6;
     margin: 8px 0;
 }
 
-a {
-    transition: color 0.2s ease;
+.todo-list > li > div > label {
+    margin: 2% 2% 2% 0;
+    padding:2% 2% 2% 0;
+   
 }
 
-a[href="index.php"] {
-    display: inline-block;
-    margin-top: 20px;
-    color: #555;
+.statusRed {
+    color: #dc0c0c ;
+    font-weight: bold;
+}
+.statusBlue {
+    color: #0077cc ;
+    font-weight: bold;
+}
+.statusGrey {
+    color: rgb(5, 18, 141) ;
+    font-weight: bold;
 }
 
-a[href="index.php"]:hover {
-    color: #000;
-}
 
 /* /////////////////////// FORM add.php ////////////////////////////////////////////// */
 
@@ -215,12 +233,26 @@ align-items: center;
 }
 .submit input{
 background-color: #0077cc;
-color: white;
+color: #f5f6f8 ;
 padding: 2% 4%;
 font-size: 20px;
 border-radius: 25px;
 margin: 2% 0 1%;
 border: none;
+}
+.success {
+    text-align: center;
+    color:  #005fa3 ;
+    margin: 3% ;
+    font-size: 18px;
+}
+
+.error {
+    text-align: center;
+    color:  #dc0c0c ;
+    margin: 3% ;
+    font-size: 18px;
+
 }
 
 /* /////////////////////// task.php ////////////////////////////////////////////// */
@@ -234,8 +266,59 @@ border: none;
     display: flex;
     flex-direction: column;
 }
-.taskContainer > p {
-    margin-left: 20%;
 
+.taskContainer > h2 {
+    margin-left: 10%;
   
+}
+.taskContainer > p {
+    margin-left: 10%;
+  
+}
+
+.buttonTask {
+
+    color: #0077cc;
+    background-color: white;
+    width: 100%;
+    font-weight: bold;
+    padding: 5px;
+    margin: 2% 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+   
+}
+
+
+.return {
+   
+    background-color: #0077cc;
+    border-radius: 20px;
+    color: #f5f6f8 ;
+    padding: 7px 20px;
+    font-size: 15px;
+    border: none;
+
+}
+
+.editTask {
+   
+    background-color: rgb(5, 18, 141);
+    border-radius: 20px;
+    color: #f5f6f8 ;
+    padding: 7px 20px;
+    font-size: 15px;
+    border: none;
+
+}
+.deleteTask {
+    
+    background-color: #dc0c0c;
+    border-radius: 20px;
+    color: #f5f6f8 ;
+    padding: 7px 15px;
+    font-size: 15px;
+    border: none;
+
 }

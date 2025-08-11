@@ -15,8 +15,9 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tasks list</title>
+    <title> Index tasks list</title>
     <link rel="stylesheet" href="../assets/styles.css">
+    <script src="../assets/scripts.js" defer></script>
 </head>
 <body>
     <?php
@@ -38,14 +39,16 @@
             <li>
                  
                     <h3><?= htmlspecialchars($task['title']) ?></h3>
-                    <p><?= htmlspecialchars($task['description']) ?></p>
-                    <label> <?= htmlspecialchars($task['status']) ?></label>
-                    <label> Priorité : <?= htmlspecialchars($task['priority']) ?></label>
+                     <div>
+                    <label id="status" > <?= htmlspecialchars($task['status']) ?></label>
+                    <label id="priority"> Priorité : <?= htmlspecialchars($task['priority']) ?></label>
                     <label> pour le : <?= htmlspecialchars($formatDate) ?></label>
-                    <div>
-                    <a href="task.php?title=<?= urlencode($task['title']) ?>">Voir</a>
-                    <a href="edit.php?title=<?= urlencode($task['title']) ?>">Modifier</a>
-                    <a href="delete.php?title=<?= urlencode($task['title']) ?>">Supprimer</a>
+                    </div>
+                    <p><?= htmlspecialchars($task['description']) ?></p>
+                    <div class = "button">
+                    <a class="consult" href="task.php?title=<?= urlencode($task['title']) ?>">Voir</a>
+                    <a class="edit" href="edit.php?title=<?= urlencode($task['title']) ?>">Modifier</a>
+                    <a class="delete" href="delete.php?title=<?= urlencode($task['title']) ?>">Supprimer</a>
                     </div>
 
 
