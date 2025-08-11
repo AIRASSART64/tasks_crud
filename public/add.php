@@ -20,6 +20,9 @@
         }elseif (empty($description)) {
             $errors[] = "Déscription à renseigner ";
   
+        }elseif (empty($dueDate)) {
+            $errors[] = "Date d'échéance à renseigner ";
+  
         }
 
        
@@ -36,7 +39,7 @@
 
             //une condition pour vérifier si je recupere quelque chose
             if ($checkTask->rowCount() > 0) {
-                $errors[] = "Task already created";
+                $errors[] = "La tâche existe déjà.";
             } else {
         
 
@@ -49,7 +52,7 @@
 
                 $insertTask->execute([$title , $description, $status, $priority, $dueDate]);
 
-                $message = "The task is saved";
+                $message = "La nouvelle tâche est enregistrée";
             }
      
         }
@@ -82,36 +85,37 @@
                     echo $message;
                 }
             ?>
-       <form action="" method="POST">
-                <div > 
-                     <label for="title">Titre</label>
-                    <input placeholder="title" type="text" id="title" name="title"  class="input" >
+       <form action="" method="POST" class="newTask">
+                <div class="input"> 
+                    <label for="title">Titre (obligatoire)</label>
+                    <input placeholder="Choisissez le titre de la tâche" type="text" id="title" name="title" maxlength="50" require >
                 </div>
-                <div >
-                     <label for="description">description</label>
-                    <input placeholder="description" type="text" id="description" name="description"  class="input">
+                <div class="input">
+                     <label for="description">Déscription (obligatoire)</label>
+                    <textarea  placeholder="Décrivez la tâche" id="description" name="description" 
+                       maxlength="200" require></textarea>
                 </div> 
-                <div>
-                    <label for="status">Statut</label>
+                <div class="input">
+                    <label for="status">Selectionnez un statut </label>
                     <select name="status" id="status">
                     <option value="0"> à faire</option>
                     <option value="1">en cours</option>
                     <option value="2" >terminée</option>
                     </select>
                  </div>
-                 <div>
-                    <label for="prority">Priorité</label>
+                 <div class="input">
+                    <label for="prority">Séléctionner une priorité</label>
                     <select name="priority" id="priority">
                     <option value="0" >moyenne</option>
                     <option value="1">haute</option>
                     <option value="2" >moyenne</option>
                     </select>
                  </div>
-                 <div>
-                    <label for="due_date">Date d'échéance</label>
-                    <input placeholder="due_date" type="date" id="due_date" name="due_date"  class="input">
+                 <div class="input">
+                    <label for="due_date"> Choisissez une date d'échéance (obligatoire)</label>
+                    <input placeholder="due_date" type="date" id="due_date" name="due_date"  require>
                </div>
-                <div>
+                <div class="submit">
                     <input class="buttonSend" type="submit" value="Envoyer">
                 </div>
             </form>

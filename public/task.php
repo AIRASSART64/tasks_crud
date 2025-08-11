@@ -35,13 +35,18 @@ if ($dueDate && strtotime($dueDate) !== false) {
     <title>Task details</title>
     <link rel="stylesheet" href="../assets/styles.css">
 </head>
+
+   <?php
+    include '../includes/header.php';
+    ?>
 <body>
+    <div class="taskContainer">
     <h2><?= htmlspecialchars($task['title']) ?></h2>
-    <p>Description : <?= htmlspecialchars($task['description']) ?></p>
+    <p>Déscription : <?= htmlspecialchars($task['description']) ?></p>
     <p>Statut : <?= htmlspecialchars($task['status']) ?></p>
     <p>Priorité : <?= htmlspecialchars($task['priority']) ?></p>
     <p>Échéance : <?= htmlspecialchars($formatDate) ?></p>
-
     <p><a href="index.php">← Retour à la liste</a></p>
+    </div>
 </body>
 </html>

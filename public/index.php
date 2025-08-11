@@ -34,11 +34,11 @@
              if ($dueDate && strtotime($dueDate) !== false) {
                  $formatDate = date("d/m/Y", strtotime($dueDate));
                 }
-        ?>
+         ?>
             <li>
                  
                     <h3><?= htmlspecialchars($task['title']) ?></h3>
-                    <p><?= htmlspecialchars($task['description']) ?> </p>
+                    <p><?= htmlspecialchars($task['description']) ?></p>
                     <label> <?= htmlspecialchars($task['status']) ?></label>
                     <label> Priorité : <?= htmlspecialchars($task['priority']) ?></label>
                     <label> pour le : <?= htmlspecialchars($formatDate) ?></label>

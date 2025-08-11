@@ -166,10 +166,10 @@ a[href="index.php"]:hover {
 
 form {
     
-    width: 70%;
+    width: 65%;
     margin: 0 auto;
     background: #fff;
-    padding: 25px;
+    padding: 15px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     display: flex;
@@ -185,4 +185,57 @@ form  > div {
     align-items: start;
     flex-direction: column;
     margin-left: 25%;
+}
+
+ .input {
+  display: flex;
+  
+}
+.input > label {
+    font-weight: bold;
+    font: size 20px; ;
+
+}
+.input input , textarea, select {
+    padding:2% 3%;
+    margin: 2% 0;
+    width: 55%;
+    border: none;
+    border-radius: 15px;
+    font-size: 14px;
+    background-color:#f5f6f8 ;
+}
+
+.submit{
+width: 100%;
+margin: 1% 0 1%;
+display: flex;
+align-items: center;
+
+}
+.submit input{
+background-color: #0077cc;
+color: white;
+padding: 2% 4%;
+font-size: 20px;
+border-radius: 25px;
+margin: 2% 0 1%;
+border: none;
+}
+
+/* /////////////////////// task.php ////////////////////////////////////////////// */
+.taskContainer {
+    width: 65%;
+    margin: 0 auto;
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+.taskContainer > p {
+    margin-left: 20%;
+
+  
 }
