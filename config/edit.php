@@ -112,7 +112,7 @@ if (empty($errors)) {
     <label for="description">Déscription (obligatoire)</label>
     <textarea name="description" maxlength="200" require><?= htmlspecialchars($task['description']) ?> </textarea>
     </div> 
-    <!-- A revoir : les selections du statut et de la priorité ne sont pas prises en compte dans la modification enregistrée dans la db -->
+    
     <div class="input">
                     <label for="status">Selectionnez un statut </label>
                     <select name="status" >
