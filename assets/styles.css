@@ -350,3 +350,41 @@ border: none;
     border: none;
 
 }
+/* /////////////////////// delete.php ////////////////////////////////////////////// */
+.formDelete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+ 
+}
+.formDelete > div {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: row;
+
+ 
+}
+
+
+.buttonConfirm {
+    background-color: #dc0c0c;
+    border-radius: 20px;
+    color: #f5f6f8 ;
+    padding: 8px 15px;
+    font-size: 15px;
+    border: none;
+    margin: 2% 5% 2% 20%;
+
+}
+.buttonCancel {
+    background-color: #0077cc;
+    border-radius: 20px;
+    color: #f5f6f8 ;
+    padding: 7px 20px;
+    margin: 2% 5% 2% 10%;
+    font-size: 15px;
+    border: none;
+
+}

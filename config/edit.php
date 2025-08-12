@@ -28,24 +28,31 @@ if (empty($errors)) {
 
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = (int) $_POST['id'] ?? '';
+
     $title = trim(htmlspecialchars($_POST["title"]) ?? '');
     $description = trim(htmlspecialchars($_POST["description"]) ?? '');
     $status = $_POST["status"] ?? '';
     $priority = $_POST["priority"] ?? '';
     $dueDate = $_POST["due_date"] ?? '';
 
+        
         if (empty($title)) {
             $errors[] = "Titre à renseigner ";
    
         }elseif (empty($description)) {
             $errors[] = "Déscription à renseigner ";
   
+        }elseif (empty($status)) {
+            $errors[] = "Statut à renseigner ";
+  
+        }elseif (empty($priority)) {
+            $errors[] = "Priorité à renseigner ";
+  
         }elseif (empty($dueDate)) {
             $errors[] = "Date d'échéance à renseigner ";
   
         }
-
+   if (empty($errors)) {
         $sql = "UPDATE tasks 
             SET title = :title, description = :description, status = :status, priority = :priority, due_date = :due_date 
             WHERE id = :id";
@@ -55,15 +62,16 @@ if (empty($errors)) {
         'description' => $description,
         'status' => $status,
         'priority' => $priority,
-        'due_date' => $due_date,
+        'due_date' => $dueDate,
         'id' => $id
     ]);
     //confirmation de la modification de la tâche et retour à la page index.php
       $message = "Les modifications sont enregistrées";
-    header("Location: ../public/index.php");
-    exit;
+    // header("Location: ../public/index.php");
+    // exit;
 
-}
+        }
+    }
 }
     // Formatage de la date d'échaeance
     $dueDate = $task['due_date'];
@@ -78,7 +86,7 @@ if (empty($errors)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier tâche</title>
+    <title>Modifier une tâche</title>
      <link rel="stylesheet" href="../assets/styles.css">
 </head>
 <body>
@@ -108,17 +116,19 @@ if (empty($errors)) {
     <div class="input">
                     <label for="status">Selectionnez un statut </label>
                     <select name="status" >
-                    <option value="0"> à faire</option>
-                    <option value="1">en cours</option>
-                    <option value="2" >terminée</option>
+                    <option value="0">Choisir un statut</option>
+                    <option value="1">à faire</option>
+                    <option value="2" >en cours</option>
+                    <option value="3" >terminée</option>
                     </select>
     </div>
      <div class="input">
                     <label for="prority">Séléctionner une priorité</label>
                     <select name="priority">
-                    <option value="0" >moyenne</option>
-                    <option value="1">haute</option>
-                    <option value="2" >moyenne</option>
+                    <option value="0" >Choisir une priorité</option>
+                    <option value="1">moyenne</option>
+                    <option value="2" >haute</option>
+                    <option value="3" >basse</option>
                     </select>
      </div>
     <div class="input">

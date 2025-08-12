@@ -19,6 +19,12 @@
         }elseif (empty($description)) {
             $errors[] = "Déscription à renseigner ";
   
+        }elseif (empty($status)) {
+            $errors[] = "Statut à renseigner ";
+  
+        }elseif (empty($priority)) {
+            $errors[] = "Priorité à renseigner ";
+  
         }elseif (empty($dueDate)) {
             $errors[] = "Date d'échéance à renseigner ";
   
@@ -97,17 +103,19 @@
                 <div class="input">
                     <label for="status">Selectionnez un statut </label>
                     <select name="status" id="status">
-                    <option value="0"> à faire</option>
-                    <option value="1">en cours</option>
-                    <option value="2" >terminée</option>
+                    <option value="0">Choisir un statut</option>
+                    <option value="1">à faire</option>
+                    <option value="2" >en cours</option>
+                     <option value="3" >terminée</option>
                     </select>
                  </div>
                  <div class="input">
                     <label for="prority">Séléctionner une priorité</label>
                     <select name="priority" id="priority">
-                    <option value="0" >moyenne</option>
-                    <option value="1">haute</option>
-                    <option value="2" >basse</option>
+                    <option value="0" >Choisir une priorité</option>
+                    <option value="1">moyenne</option>
+                    <option value="2" >haute</option>
+                    <option value="3" >basse</option>
                     </select>
                  </div>
                  <div class="input">
