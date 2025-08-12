@@ -1,7 +1,6 @@
 <?php
     
     require_once '../config/database.php';
-
     $errors = [];
     $message = "";
 
@@ -24,16 +23,14 @@
             $errors[] = "Date d'échéance à renseigner ";
   
         }
+         
 
-       
         
         if (empty($errors)) {
             //logique de traitement en db
             $pdo = dbConnexion();
 
-            
             $checkTask = $pdo->prepare("SELECT * FROM tasks WHERE title = ?");
-
         
             $checkTask->execute([$title]);
 
@@ -110,7 +107,7 @@
                     <select name="priority" id="priority">
                     <option value="0" >moyenne</option>
                     <option value="1">haute</option>
-                    <option value="2" >moyenne</option>
+                    <option value="2" >basse</option>
                     </select>
                  </div>
                  <div class="input">

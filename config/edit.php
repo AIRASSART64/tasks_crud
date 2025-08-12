@@ -1,10 +1,13 @@
 <?php
 session_start();
 require_once '../config/database.php';
-$pdo = dbConnexion();
+
+$errors = [];
+$message = "";
 
 // on se positionne sur toutes les données db associées à la tâche selectionnée dans la liste des tâches et identifiées par un ID  ---
 if (isset($_GET['id'])) {
+    $pdo = dbConnexion();
     $id = (int) $_GET['id'];
     //  On appelle toutes les données de la db associées à la tâche selectionnée
 
@@ -14,26 +17,40 @@ if (isset($_GET['id'])) {
 
     // message d'erreur et fin d'execution du code si la tâche ou l'Id n'existent pas dans la db
     if (!$task) {
-        die("Tâche introuvable");
+        $errors[] = "Tâche introuvable";
     }
     } else {
-    die("ID inexistant");
+   $errors[] ="ID inexistant";
     }
 
 // Traitement des modifications saisies et envoyées
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = (int) $_POST['id'];
-    $title = $_POST['title'];
-    $description = $_POST['description'];
-    $status = $_POST['status'];
-    $priority = $_POST['priority'];
-    $due_date = $_POST['due_date'];
+if (empty($errors)) {
 
-    $sql = "UPDATE tasks 
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = (int) $_POST['id'] ?? '';
+    $title = trim(htmlspecialchars($_POST["title"]) ?? '');
+    $description = trim(htmlspecialchars($_POST["description"]) ?? '');
+    $status = $_POST["status"] ?? '';
+    $priority = $_POST["priority"] ?? '';
+    $dueDate = $_POST["due_date"] ?? '';
+
+        if (empty($title)) {
+            $errors[] = "Titre à renseigner ";
+   
+        }elseif (empty($description)) {
+            $errors[] = "Déscription à renseigner ";
+  
+        }elseif (empty($dueDate)) {
+            $errors[] = "Date d'échéance à renseigner ";
+  
+        }
+
+        $sql = "UPDATE tasks 
             SET title = :title, description = :description, status = :status, priority = :priority, due_date = :due_date 
             WHERE id = :id";
-    $editTask = $pdo->prepare($sql);
-    $editTask->execute([
+        $editTask = $pdo->prepare($sql);
+        $editTask->execute([
         'title' => $title,
         'description' => $description,
         'status' => $status,
@@ -42,10 +59,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'id' => $id
     ]);
     //confirmation de la modification de la tâche et retour à la page index.php
-      $_SESSION['message'] = " La tâche a bien été modifiée.";
+      $message = "Les modifications sont enregistrées";
     header("Location: ../public/index.php");
     exit;
 
+}
 }
     // Formatage de la date d'échaeance
     $dueDate = $task['due_date'];
@@ -69,10 +87,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
  ?>
 
 <h2 class="h2">Modifier la tâche</h2>
+  <?php foreach ($errors as $error): ?>  
+        <p class="error"><?= htmlspecialchars($error) ?></p>
+        <?php endforeach; ?>
+
+        <?php if (!empty($message)): ?>
+        <p class="success"><?= htmlspecialchars($message) ?></p>
+        <?php endif; ?>
+        
 <form method="post" class="newTask">
      <div class="input"> 
     <label for="title">Titre (obligatoire)</label>
-    <input type="text" name="title" value="<?= htmlspecialchars($task['title']) ?>" maxlength="50"  required>
+    <input type="text" name="title" value="<?= htmlspecialchars($task['title']) ?>" maxlength="50"  require>
     </div>
     <div class="input">
     <label for="description">Déscription (obligatoire)</label>

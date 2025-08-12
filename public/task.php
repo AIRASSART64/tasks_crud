@@ -48,11 +48,11 @@ if ($dueDate && strtotime($dueDate) !== false) {
         <a class="return" href="index.php">←  ma liste</a>
         <a class="editTask" href="../config/edit.php?id=<?=$task['id'] ?>">Modifier</a>
         <a class="deleteTask" href="../config/delete.php?id=<?= $task['id'] ?>">Supprimer</a>
-    </div>
+    </div> 
     </div>
 
     <?php
       include '../includes/footer.php';
     ?>
 </body>
-</html>
+</html>      
