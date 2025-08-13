@@ -20,9 +20,19 @@ if (!$task) {
 
 // Formatage de la date d'échaeance
 $dueDate = $task['due_date'];
-$formatDueDate = "Date invalide";
+$createdDate = $task ['created_at'];
+$updatedDate = $task ['updated_at'];
+$formatDueDate = " Format de date autorisé : d/m/y";
+$formatCreatedDate = " Format de date autorisé : d/m/y";
+$formatUpdatedDate = " Format de date autorisé : d/m/y";
 if ($dueDate && strtotime($dueDate) !== false) {
     $formatDueDate = date("d/m/Y", strtotime($dueDate));
+} 
+if ($createdDate && strtotime($createdDate) !== false) {
+    $formatCreatedDate = date("d/m/Y", strtotime($createdDate));
+} 
+if  ($updatedDate && strtotime($updatedDate) !== false) {
+    $formatUpdatedDate = date("d/m/Y", strtotime($updatedDate));
 }
 ?>
 <!DOCTYPE html>
@@ -32,6 +42,7 @@ if ($dueDate && strtotime($dueDate) !== false) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task details</title>
     <link rel="stylesheet" href="../assets/styles.css">
+    <script src="../assets/scripts.js" defer></script>
 </head>
 
    <?php
@@ -40,10 +51,13 @@ if ($dueDate && strtotime($dueDate) !== false) {
 <body>
     <div class="taskContainer">
     <h2><?= htmlspecialchars($task['title']) ?></h2>
-    <p>Statut : <?= htmlspecialchars($task['status']) ?></p>
-    <p>Priorité : <?= htmlspecialchars($task['priority']) ?></p>
-    <p>Échéance : <?= htmlspecialchars($formatDueDate) ?></p>
-    <p>Déscription : <?= htmlspecialchars($task['description']) ?></p>
+    <label class="status" >Statut : <?= htmlspecialchars($task['status']) ?></label>
+    <label class="priority">Priorité : <?= htmlspecialchars($task['priority']) ?></label>
+    <p class="bold">Date d'échéance : <?= htmlspecialchars($formatDueDate) ?></p>
+    <p class="bold">Déscription : <?= htmlspecialchars($task['description']) ?></p>
+    <p>Date de création : <?= htmlspecialchars($formatCreatedDate) ?></p>
+    <p>Date de derniére modification : <?= htmlspecialchars($formatUpdatedDate) ?></p>
+
     <div class = "buttonTask">
         <a class="return" href="index.php">←  ma liste</a>
         <a class="editTask" href="../config/edit.php?id=<?=$task['id'] ?>">Modifier</a>

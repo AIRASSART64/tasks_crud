@@ -299,10 +299,13 @@ border: none;
     margin-left: 10%;
   
 }
-.taskContainer > p {
+.taskContainer > label, p {
     margin-left: 10%;
-  
+   
 }
+ .bold {
+    font-weight: bold;
+ }
 
 .buttonTask {
 
