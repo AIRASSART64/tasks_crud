@@ -12,7 +12,7 @@ body {
     background-color: #f8f9fa;
     color: #333;
     margin: 0;
-    padding: 20px;
+  
     
 }
 
@@ -22,8 +22,8 @@ header {
  align-items: center;
  flex-direction: column;
  margin-bottom: 2%;
- background-color:#f5f6f8; 
- color: #0077cc;
+ color:#f5f6f8; 
+ background-color: #0077cc;
 }
 
 
@@ -40,7 +40,7 @@ margin: 2% 0;
 
 }
 nav > ul > li  {
-color: #000;
+
 display: flex;
 justify-content: space-between; 
 
@@ -49,19 +49,19 @@ justify-content: space-between;
 }
 nav > ul > li > a  {
 
-color: #000;
+color: #f5f6f8 ;
 margin: 0 50px;
-padding: 1% 2%;
+padding:  2% 7%;
 font-size: 20px;
 white-space: nowrap;
-padding: 1%;
+border-radius:20px;
 }
 
 nav > ul > li > a:hover {
 
-background-color: #0077cc;
-padding: 2% 4% ;
-color: #f5f6f8;
+background-color: #f5f6f8;
+padding: 2% 7% ;
+color: #0077cc;
 transition: background 0.2s;
 border-radius:20px;
 
@@ -361,12 +361,13 @@ border: none;
     flex-direction: column;
     margin-bottom: 15%;
 
- 
 }
 
 .formDelete > p {
-    width: 100%;
-    text-align: center;
+  text-align: center;
+  font-weight: bold;
+  margin: 0;
+
  
 }
 
@@ -384,6 +385,7 @@ border: none;
     background-color: #dc0c0c;
     border-radius: 20px;
     color: #f5f6f8 ;
+    cursor: pointer;
     padding: 8px 17px;
     font-size: 15px;
     border: none;
